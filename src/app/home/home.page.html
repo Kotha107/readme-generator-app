@@ -1,20 +1,129 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content fullscreen>
+  <div class="min-h-screen flex items-center justify-center p-4 font-sans">
+    <div class="w-full max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+      <form class="space-y-8" [formGroup]="readMeForm" (ngSubmit)="onSubmit()">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Title</h2>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+          <div class="flex flex-col md:flex-row md:space-x-6">
+            <input
+              class="flex-1 bg-transparent border-0 border-b border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 w-full py-2 transition-colors"
+              type="text"
+              formControlName="titlePrefix"
+            />
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+            <input
+              class="flex-1 bg-transparent border-0 border-b border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 w-full py-2 transition-colors"
+              type="text"
+              formControlName="name"
+              placeholder="name"
+            />
+          </div>
+          <div class="mt-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">SubTitle</h2>
+            <input
+              class="flex-1 bg-transparent border-0 border-b border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 w-full py-2 transition-colors"
+              type="text"
+              formControlName="subtitle"
+            />
+          </div>
+          <div class="mt-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Work</h2>
+            <div class="flex flex-col md:flex-row md:space-x-6">
+              <input
+                class="flex-1 bg-transparent border-0 border-b border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 w-full py-2 transition-colors"
+                type="text"
+                formControlName="currentWork"
+              />
+
+              <input
+                class="flex-1 bg-transparent border-0 border-b border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 w-full py-2 transition-colors"
+                type="text"
+                formControlName="curentWorkProject"
+                placeholder="project name"
+              />
+            </div>
+            <div class="flex flex-col md:flex-row md:space-x-6 mt-6">
+              <input
+                class="flex-1 bg-transparent border-0 border-b border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 w-full py-2 transition-colors"
+                type="text"
+                formControlName="collaboration"
+              />
+
+              <input
+                class="flex-1 bg-transparent border-0 border-b border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 w-full py-2 transition-colors"
+                type="text"
+                formControlName="collaborationProject"
+                placeholder="project name"
+              />
+            </div>
+            <div class="flex flex-col md:flex-row md:space-x-6 mt-6">
+              <input
+                class="flex-1 bg-transparent border-0 border-b border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 w-full py-2 transition-colors"
+                type="text"
+                formControlName="funFact"
+              />
+
+              <input
+                class="flex-1 bg-transparent border-0 border-b border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-500 w-full py-2 transition-colors"
+                type="text"
+                formControlName="funFactProject"
+                placeholder="I think I am funny"
+              />
+            </div>
+          </div>
+          <div class="mt-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Skills</h2>
+            <div>
+              <h2 class="text-2xl text-blue-950 mb-2">Programming Language</h2>
+              <div class="border-t border-solid border-gray-400"></div>
+              <div
+                class="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-x-8 gap-y-6"
+              >
+                @for (skill of skills; track skill.name) {
+
+                <label
+                  class="relative flex items-center gap-3 cursor-pointer group"
+                >
+                  <input
+                    type="checkbox"
+                    [name]="skill.name"
+                    [value]="skill.name"
+                    formControlName="skills"
+                    class="h-5 w-5 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  />
+
+                  <img
+                    [src]="skill.svgPath"
+                    [alt]="skill.name"
+                    class="h-8 w-8 object-contain"
+                  />
+
+                  <span
+                    class="left-full px-3 py-1.5 text-sm font-medium text-white bg-gray-900 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+                  >
+                    {{ skill.name }}
+                  </span>
+                </label>
+                }
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 text-center">
+            <!-- <a
+              routerLink="/preview"
+              class="w-[30%] px-4 py-2 bg-transparent border-2 border-blue-500 text-gray-900 rounded-lg transition-colors cursor-pointer"
+            >
+              Generate README</a -->
+            <button
+              type="submit"
+              class="w-[30%] px-4 py-2 bg-transparent border-2 border-blue-500 text-gray-900 rounded-lg hover:bg-gray-900 hover:text-white hover:border-blue-700 transition-colors cursor-pointer"
+            >
+              Generate README
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </ion-content>
