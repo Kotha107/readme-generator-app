@@ -6,21 +6,21 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [ IonicModule, RouterModule , ReactiveFormsModule],
+  imports: [IonicModule, RouterModule, ReactiveFormsModule],
 })
 export class HomePage {
-  private fb= inject(FormBuilder);
+  private fb = inject(FormBuilder);
   public readMeForm = this.fb.group({
-    titlePrefix: ['Hi 👋'],
-    name: [''],
-    subtitle: ['"A passionate frontend developer from Bangladesh'],
-    currentWork: ['🔭 I’m currently working on'],
-    curentWorkProject: [''],
-    collaboration: ['👯 I’m looking to collaborate on'],
-    collaborationProject: [''],
-    funFact: ['⚡ Fun fact'],
-    funFactProject: [''],
-    skills: [[]],
+    titlePrefix: 'Hi 👋',
+    name: '',
+    subtitle: 'A passionate frontend developer from Bangladesh',
+    currentWork: '🔭 I’m currently working on',
+    curentWorkProject: '',
+    collaboration: '👯 I’m looking to collaborate on',
+    collaborationProject: '',
+    funFact: '⚡ Fun fact',
+    funFactProject: '',
+    skills: [] as string[]  ,
   });
   public skills = [
     { name: 'C', svgPath: 'assets/icons/c.svg' },
@@ -33,9 +33,7 @@ export class HomePage {
     { name: 'PHP', svgPath: 'assets/icons/php.svg' },
   ];
   constructor() {}
-  onSubmit() : void {
-    
-      console.log(this.readMeForm.value);
-    
+  onSubmit(): void {
+    console.log(this.readMeForm.value);
   }
 }
