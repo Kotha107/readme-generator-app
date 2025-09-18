@@ -1,5 +1,5 @@
 export interface ReadMeDataModel {
-     titlePrefix: string;
+ titlePrefix: string;
   name: string;
   subtitle: string;
   currentWork: string;

@@ -1,7 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { ReadmedataService } from '../services/readmedata.service';
+import { ReadMeDataModel } from '../models/read-me-data.model';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -9,9 +11,11 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
   imports: [IonicModule, RouterModule, ReactiveFormsModule],
 })
 export class HomePage {
+  private readmedataService = inject(ReadmedataService);
   private fb = inject(FormBuilder);
+  private router = inject(Router);
   public readMeForm = this.fb.group({
-    titlePrefix: 'Hi 👋',
+    titlePrefix: 'Hi 👋 , ',
     name: '',
     subtitle: 'A passionate frontend developer from Bangladesh',
     currentWork: '🔭 I’m currently working on',
@@ -35,5 +39,9 @@ export class HomePage {
   constructor() {}
   onSubmit(): void {
     console.log(this.readMeForm.value);
+    this.readmedataService.updateReadmeData(this.readMeForm.value as any);
+    this.router.navigate(['/preview']);
+    
   }
+  
 }
