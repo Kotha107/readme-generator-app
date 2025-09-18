@@ -1,0 +1,7 @@
+{
+  "name": "readme-generator-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
