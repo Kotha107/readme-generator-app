@@ -1,19 +1,44 @@
 <ion-content [fullscreen]="true">
   <div class="min-h-screen flex items-center justify-center p-2 font-sans">
-    <div class="w-full max-w-2xl  bg-white p-8 rounded-xl shadow-lg">
- <ion-title class="text-center"> {{readmeData?.titlePrefix}} {{readmeData?.name}} </ion-title>
- <p class="text-gray-700 text-sm text-center mt-1"> {{readmeData?.subtitle}}</p>
- <div >
-  <div class="mt-6 mb-6">
-     <p class="text-gray-900"> {{readmeData?.currentWork}} {{readmeData?.curentWorkProject}} </p>
+    <div class="w-full max-w-2xl bg-white p-8 rounded-xl shadow-lg">
+      <ion-title class="text-center">
+        {{readmeData?.titlePrefix}} {{readmeData?.name}}
+      </ion-title>
+      <p class="text-gray-700 text-sm text-center mt-1">
+        {{readmeData?.subtitle}}
+      </p>
+      <div>
+        <div class="mt-6 mb-6">
+          <p class="text-gray-900">
+            {{readmeData?.currentWork}} {{readmeData?.curentWorkProject}}
+          </p>
+        </div>
 
-  </div>
-   
-    <div class="mt-6 mb-6"><p class="text-gray-900"> {{readmeData?.collaboration}} {{readmeData?.collaborationProject}} </p></div>
-    <div class="mt-6 mb-6"><p class="text-gray-900"> {{readmeData?.funFact}} {{readmeData?.funFactProject}} </p></div>
- </div>
- </div>
-  </div>
- 
+        <div class="mt-6 mb-6">
+          <p class="text-gray-900">
+            {{readmeData?.collaboration}} {{readmeData?.collaborationProject}}
+          </p>
+        </div>
+        <div class="mt-6 mb-6">
+          <p class="text-gray-900">
+            {{readmeData?.funFact}} {{readmeData?.funFactProject}}
+          </p>
+        </div>
+      </div>
+      <div class="mt-6 mb-6">
+        <p class="text-gray-900 font-bold">Programming Languages</p>
+        <div class="mt-4 grid grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-3">
+          @for(skill of readmeData?.skills ; track skill){
 
+          <img
+            [src]="skill.svgPath"
+            [alt]="skill.name"
+            class="h-10 w-10 object-contain"
+          />
+
+          }
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>

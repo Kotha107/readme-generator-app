@@ -1,5 +1,9 @@
-export interface ReadMeDataModel {
- titlePrefix: string;
+export interface skillModel {
+  name: string;
+  svgPath: string;
+}
+export interface ReadMeDataModel extends skillModel {
+  titlePrefix: string;
   name: string;
   subtitle: string;
   currentWork: string;
@@ -8,5 +12,5 @@ export interface ReadMeDataModel {
   collaborationProject: string;
   funFact: string;
   funFactProject: string;
-  skills: string[];
+  skills: skillModel[];
 }

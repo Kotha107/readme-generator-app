@@ -18,6 +18,12 @@
               formControlName="name"
               placeholder="name"
             />
+            <div
+              class="text-red-500 text-sm mt-2 left-full"
+              [class.hidden]="!(readMeForm.get('name')?.errors?.['required'] && (readMeForm.get('name')?.dirty || readMeForm.get('name')?.touched || isSubmitted ))"
+            >
+              This is required
+            </div>
           </div>
           <div class="mt-6">
             <h2 class="text-2xl font-bold text-gray-900 mb-6">SubTitle</h2>
@@ -42,6 +48,12 @@
                 formControlName="curentWorkProject"
                 placeholder="project name"
               />
+              <div
+                class="text-red-500 text-sm mt-2 left-full"
+                [class.hidden]="!(readMeForm.get('curentWorkProject')?.errors?.['required'] && (readMeForm.get('curentWorkProject')?.dirty || readMeForm.get('curentWorkProject')?.touched || isSubmitted ))"
+              >
+                This is required
+              </div>
             </div>
             <div class="flex flex-col md:flex-row md:space-x-6 mt-6">
               <input
@@ -56,6 +68,12 @@
                 formControlName="collaborationProject"
                 placeholder="project name"
               />
+              <div
+                class="text-red-500 text-sm mt-2 left-full"
+                [class.hidden]="!(readMeForm.get('collaborationProject')?.errors?.['required'] && (readMeForm.get('collaborationProject')?.dirty || readMeForm.get('collaborationProject')?.touched || isSubmitted ))"
+              >
+                This is required
+              </div>
             </div>
             <div class="flex flex-col md:flex-row md:space-x-6 mt-6">
               <input
@@ -89,7 +107,8 @@
                     type="checkbox"
                     [name]="skill.name"
                     [value]="skill.name"
-                    formControlName="skills"
+                    (change)="onSkillChange($event, skill)"
+                    [checked]="isSkillSelected(skill.name)"
                     class="h-5 w-5 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                   />
 
@@ -114,9 +133,9 @@
               routerLink="/preview"
               class="w-[30%] px-4 py-2 bg-transparent border-2 border-blue-500 text-gray-900 rounded-lg transition-colors cursor-pointer"
             >
-              Generate README</a -->
+              Generate README</a> -->
             <button
-              type="submit" 
+              type="submit"
               class="w-[30%] px-4 py-2 bg-transparent border-2 border-blue-500 text-gray-900 rounded-lg hover:bg-gray-900 hover:text-white hover:border-blue-700 transition-colors cursor-pointer"
             >
               Generate README
